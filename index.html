@@ -8,34 +8,53 @@
   </head>
   <body>
     <div class="container">
-      <form novalidate  >
+      <form novalidate>
         <div class="inputDiv">
           <label for="email">Email</label>
-          <input autocomplete="off" class="email" id="email" type="text" required />
+          <input
+            autocomplete="off"
+            class="email"
+            id="email"
+            type="text"
+            required
+          />
           <span class="emailError"></span>
         </div>
 
-        <div class="inputDiv">
-          <label for="country">Country</label>
-          <input class="country" id="country" type="text" required/>
-          <span class="countryError"></span>
-        </div>
+        <fieldset>
+          <legend>Country:</legend>
+
+          <div>
+            <input type="radio" class="canada" id="canada" name="country" value="canada" checked />
+            <label for="canada">Canada</label>
+          </div>
+
+          <div>
+            <input type="radio" class="us" id="us" name="country" value="us" />
+            <label for="us">United States</label>
+          </div>
+        </fieldset>
 
         <div class="inputDiv">
           <label for="postal">Postal code</label>
-          <input class="postal" id="postal" type="text" required/>
+          <input class="postal" id="postal" type="text" required />
           <span class="postalError"></span>
         </div>
 
         <div class="inputDiv">
           <label for="password">Password</label>
-          <input class="password" id="password" type="text" required/>
+          <input class="password" id="password" type="text" required />
           <span class="passwordError"></span>
         </div>
 
         <div class="inputDiv">
           <label for="passwordConfirm">Confirm Password</label>
-          <input class="passwordConfirm" id="passwordConfirm" type="text" required/>
+          <input
+            class="passwordConfirm"
+            id="passwordConfirm"
+            type="text"
+            required
+          />
           <span class="passwordConfirmError"></span>
         </div>
 
@@ -43,7 +62,7 @@
         <span class="submitError"></span>
       </form>
     </div>
+<script type="module" src="index.js"></script>
 
-    <script src="index.js"></script>
   </body>
 </html>
