@@ -9,11 +9,37 @@
   <body>
     <div class="container">
       <form action="#" novalidate>
-        <label for="email">Email</label> <input name="email" type="text" /> <span></span>
-        <label for="country">Country</label> <input name='country' type="text" /> <span></span>
-        <label for="postal">Postal code</label> <input name='postal' type="text" /> <span></span>
-        <label for="password">Password</label> <input name='password' type="text" /> <span></span>
-        <label for="passwordConfirm">Confirm Password</label> <input name='passwordConfirm' type="text" /> <span></span>
+        <div class="inputDiv">
+          <label for="email">Email</label>
+          <input name="email" type="text" />
+          <span class="emailError"></span>
+        </div>
+
+        <div class="inputDiv">
+          <label for="country">Country</label>
+          <input name="country" type="text" />
+          <span class="countryError"></span>
+        </div>
+
+        <div class="inputDiv">
+          <label for="postal">Postal code</label>
+          <input name="postal" type="text" />
+          <span class="postalError"></span>
+        </div>
+
+        <div class="inputDiv">
+          <label for="password">Password</label>
+          <input name="password" type="text" />
+          <span class="passwordError"></span>
+        </div>
+
+        <div class="inputDiv">
+          <label for="passwordConfirm">Confirm Password</label>
+          <input name="passwordConfirm" type="text" />
+          <span class="passwordConfirmError"></span>
+        </div>
+
+        <button type="submit">Submit</button>
       </form>
     </div>
   </body>
