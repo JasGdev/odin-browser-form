@@ -7,7 +7,8 @@ const usInput = document.querySelector(".us");
 const emailInput = document.querySelector(".email");
 
 
-import { validateEmail } from './emailValidation.js';
+import { validateEmail } from './Validations/emailValidation.js';
+import { validatePostal } from './Validations/postalValidation.js';
 import { disableErrorMsg, enableErrorMsg } from './errorMsg.js';
 
 
@@ -22,8 +23,8 @@ const inputList = [
 const validate = (input) => {
     if (input.id == 'email'){
         validateEmail();
-    } else if (input.id == ''){
-
+    } else if (input.id == 'postal'){
+        validatePostal();
     }
 }
 

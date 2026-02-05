@@ -1,4 +1,4 @@
-import { disableErrorMsg, enableErrorMsg } from "./errorMsg.js";
+import { disableErrorMsg, enableErrorMsg } from "../errorMsg.js";
 
 const emailInput = document.querySelector(".email");
 
