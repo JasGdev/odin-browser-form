@@ -14,14 +14,31 @@ const inputList = [
 ];
 
 emailInput.addEventListener("input", function () {
-  if (!isValidEmail(emailInput)) {
-    enableErrorMsg(emailInput, "Provide proper email format");
-  } else {
-    disableErrorMsg(emailInput);
-  }
+    validateEmail();
 });
 
+const validateEmail = () => {
+    if (!isValidEmail(emailInput)) {
+        if (emailInput.value.length === 0){
+            enableErrorMsg(
+              emailInput,
+              "Allowed: a-z 0-9 _ . ! # $ % & ' * + / = ? ^ ` { | } ~ -",
+            );
+        } else if (emailInput.value.length === 1 && emailInput.value == '@'){
+            enableErrorMsg(emailInput, "Error follow instruction for allowed value");
+        }
+        else if (emailInput.value.length > 0 && emailInput.value.includes('@')){
+            enableErrorMsg(emailInput, "Allowed: a-z 0-9 -")
+            
+        } else if (emailInput.value.length > 0) {
+          -enableErrorMsg(emailInput, "You can enter the @ now");
+        }
+    // enableErrorMsg(emailInput, "Provide proper email format");
+    } else {
+    disableErrorMsg(emailInput);
+    }
 
+}
 
 const isValidEmail = (email) => {
   const emailRegExp = /^[\w.!#$%&'*+/=?^`{|}~-]+@[a-z\d-]+(?:\.[a-z\d-]+)*$/i;
@@ -29,12 +46,34 @@ const isValidEmail = (email) => {
   return validity;
 };
 
+
+const validate = (input) => {
+    if (input.id == 'email'){
+        validateEmail();
+    }
+}
+
+// validation on leaving input field
+inputList.forEach((input) => {
+    input.addEventListener('focusout', function() {
+        validate(input)
+    })
+})
+
+// validation on entering
+inputList.forEach((input) => {
+    input.addEventListener('focus', function() {
+        validate(input)
+    })
+})
+
+// validation on form submit
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   inputList.forEach((input) => {
     if (input.validity.valueMissing) {
       enableErrorMsg(input, "Missing value");
-    }
+    } 
   });
 });
 
