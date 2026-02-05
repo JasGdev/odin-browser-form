@@ -2,45 +2,47 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta id="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <form action="#" novalidate>
+      <form novalidate  >
         <div class="inputDiv">
           <label for="email">Email</label>
-          <input name="email" type="text" />
+          <input autocomplete="off" class="email" id="email" type="text" required />
           <span class="emailError"></span>
         </div>
 
         <div class="inputDiv">
           <label for="country">Country</label>
-          <input name="country" type="text" />
+          <input class="country" id="country" type="text" required/>
           <span class="countryError"></span>
         </div>
 
         <div class="inputDiv">
           <label for="postal">Postal code</label>
-          <input name="postal" type="text" />
+          <input class="postal" id="postal" type="text" required/>
           <span class="postalError"></span>
         </div>
 
         <div class="inputDiv">
           <label for="password">Password</label>
-          <input name="password" type="text" />
+          <input class="password" id="password" type="text" required/>
           <span class="passwordError"></span>
         </div>
 
         <div class="inputDiv">
           <label for="passwordConfirm">Confirm Password</label>
-          <input name="passwordConfirm" type="text" />
+          <input class="passwordConfirm" id="passwordConfirm" type="text" required/>
           <span class="passwordConfirmError"></span>
         </div>
 
         <button type="submit">Submit</button>
       </form>
     </div>
+
+    <script src="index.js"></script>
   </body>
 </html>

@@ -58,16 +58,17 @@ input:focus {
   border: 1px rgb(0, 0, 0) solid;
 }
 
-input.invalid {
+input:invalid {
   border: 1px  var(--error-color) solid;
 }
 
-input.invalid:focus {
+input:invalid:focus {
   background-color: rgba(255, 0, 0, 0.226);
 }
 
 /* button */
 button {
+margin-top: 10px;
   background-color: black;
   color: white;
   border: 0px;
@@ -81,12 +82,15 @@ button:hover {
 
 /* for error msg */
 span {
-  min-height: 1rem;
-
-  padding: 2px;
+  min-height: 1.3rem;
+  padding: 1px;
+  font-size: 0.8rem;
   /* visibility: hidden; */
 }
 
-span.show {
+span.invalid {
   background-color: var(--error-color);
+  color: white;
+  padding-left: 5px
+
 }
