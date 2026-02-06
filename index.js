@@ -52,3 +52,4 @@ form.addEventListener("submit", function (e) {
   });
 });
 
+canadaInput.addEventListener('change', validatePostal)
