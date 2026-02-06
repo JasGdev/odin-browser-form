@@ -10,21 +10,50 @@ emailInput.addEventListener("input", function () {
 
 const validateEmail = () => {
   if (!isValidEmail(emailInput)) {
-    if (emailInput.value.length === 0) {
+    if (emailInput.value.length === 0 && !emailInput.value.includes("@")) {
       enableErrorMsg(
         emailInput,
         "Allowed: a-z 0-9 _ . ! # $ % & ' * + / = ? ^ ` { | } ~ -",
       );
-    } else if (emailInput.value.length === 1 && emailInput.value == "@") {
-      enableErrorMsg(emailInput, "Error follow instruction for allowed value");
-    } else if (emailInput.value.length > 0 && emailInput.value.includes("@")) {
+    } else if (
+      emailInput.value.length === 1 &&
+      emailInput.value.includes("@")
+    ) {
+      enableErrorMsg(
+        emailInput,
+        "Are you sure your input is: a-z 0-9 _ . ! # $ % & ' * + / = ? ^ ` { | } ~ -",
+      );
+    } else if (emailInput.value.length > 0 && !emailInput.value.includes("@")) {
+      const currentAllowedValue = /^[\w.!#$%&'*+/=?^`{|}~-]+$/;
+      const validity = currentAllowedValue.test(emailInput.value);
+      if (!validity) {
+        enableErrorMsg(
+          emailInput,
+          "Are you sure your input is: a-z 0-9 _ . ! # $ % & ' * + / = ? ^ ` { | } ~ -",
+        );
+      } else if (validity) {
+        enableErrorMsg(emailInput, "You can enter @ now");
+      }
+    } else if (emailInput.value.length > 1 && emailInput.value.includes("@")) {
+      const currentAllowedValue = /^[a-z\d-]+(?:\.[a-z\d-]+)*$/
+      console.log('in if')
+      const indexofAt = emailInput.value.indexOf('@')
+      const afterAtValue = emailInput.value.substring(indexofAt+1);
+      console.log(emailInput.value);
+      const validity = currentAllowedValue.test(afterAtValue);
+      console.log(validity)
+      
       enableErrorMsg(emailInput, "Allowed: a-z 0-9 -");
-    } else if (emailInput.value.length > 0) {
-      enableErrorMsg(emailInput, "You can enter the @ now");
-    }
-    // enableErrorMsg(emailInput, "Provide proper email format");
+        
+      if (!validity && afterAtValue.length !== 0) {
+        enableErrorMsg(
+          emailInput,
+          "Are you sure your input after @ is: a-z 0-9 -",
+        );
+      }
+    } 
   } else {
-    disableErrorMsg(emailInput);
+     disableErrorMsg(emailInput);
   }
 };
 

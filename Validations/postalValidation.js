@@ -20,9 +20,11 @@ const validatePostal = () => {
         enableErrorMsg(postalInput, "Enter Letter");
       } else if (postalInput.value.length === 3) {
         enableErrorMsg(postalInput, "Enter space, hyphen or another number");
-      } else if (
-        postalInput.value.length === 4 &&
+      } else if (postalInput.value.length === 4 &&
         (postalInput.value.includes(" ") || postalInput.value.includes("-"))
+
+        
+        
       ) {
         enableErrorMsg(postalInput, "Enter Number");
       } else if (postalInput.value.length === 4) {
