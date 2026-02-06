@@ -21,7 +21,7 @@ const validateEmail = () => {
     ) {
       enableErrorMsg(
         emailInput,
-        "Are you sure your input is: a-z 0-9 _ . ! # $ % & ' * + / = ? ^ ` { | } ~ -",
+        "Are you sure your previous input is: a-z 0-9 _ . ! # $ % & ' * + / = ? ^ ` { | } ~ -",
       );
     } else if (emailInput.value.length > 0 && !emailInput.value.includes("@")) {
       const currentAllowedValue = /^[\w.!#$%&'*+/=?^`{|}~-]+$/;
@@ -29,7 +29,7 @@ const validateEmail = () => {
       if (!validity) {
         enableErrorMsg(
           emailInput,
-          "Are you sure your input is: a-z 0-9 _ . ! # $ % & ' * + / = ? ^ ` { | } ~ -",
+          "Are you sure your previous input is: a-z 0-9 _ . ! # $ % & ' * + / = ? ^ ` { | } ~ -",
         );
       } else if (validity) {
         enableErrorMsg(emailInput, "You can enter @ now");
