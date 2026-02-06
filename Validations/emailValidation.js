@@ -35,25 +35,22 @@ const validateEmail = () => {
         enableErrorMsg(emailInput, "You can enter @ now");
       }
     } else if (emailInput.value.length > 1 && emailInput.value.includes("@")) {
-      const currentAllowedValue = /^[a-z\d-]+(?:\.[a-z\d-]+)*$/
-      console.log('in if')
-      const indexofAt = emailInput.value.indexOf('@')
-      const afterAtValue = emailInput.value.substring(indexofAt+1);
-      console.log(emailInput.value);
+      const currentAllowedValue = /^[a-z\d-]+(?:\.[a-z\d-]+)*$/;
+      const indexofAt = emailInput.value.indexOf("@");
+      const afterAtValue = emailInput.value.substring(indexofAt + 1);
       const validity = currentAllowedValue.test(afterAtValue);
-      console.log(validity)
-      
+
       enableErrorMsg(emailInput, "Allowed: a-z 0-9 -");
-        
+
       if (!validity && afterAtValue.length !== 0) {
         enableErrorMsg(
           emailInput,
           "Are you sure your input after @ is: a-z 0-9 -",
         );
       }
-    } 
+    }
   } else {
-     disableErrorMsg(emailInput);
+    disableErrorMsg(emailInput);
   }
 };
 
@@ -63,4 +60,4 @@ const isValidEmail = (email) => {
   return validity;
 };
 
-export { validateEmail };
+export { validateEmail, isValidEmail};

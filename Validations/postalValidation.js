@@ -5,27 +5,22 @@ const postalInput = document.querySelector(".postal");
 const canadaInput = document.querySelector(".canada");
 const usInput = document.querySelector(".us");
 
-const postalError = document.querySelector('.postalError')
+const postalError = document.querySelector(".postalError");
 
 canadaInput.addEventListener("change", () => {
   if (postalError.classList.contains("invalid")) {
     validatePostal();
   }
-  
 });
-
 
 usInput.addEventListener("change", () => {
-    if (postalError.classList.contains("invalid")) {
-      validatePostal();
-    }
+  if (postalError.classList.contains("invalid")) {
+    validatePostal();
+  }
 });
 
-
-
-
 postalInput.addEventListener("input", function () {
-  console.log(postalInput.value.length);
+
   validatePostal();
 });
 
@@ -129,32 +124,61 @@ const validatePostal = () => {
         !(postalInput.value.includes(" ") || postalInput.value.includes("-"))
       ) {
         enableErrorMsg(postalInput, "The postal code is too long");
-      }
-      else if (postalInput.value.length > 7){
-        enableErrorMsg(
-          postalInput,
-          "The postal code is too long",
-        );
+      } else if (postalInput.value.length > 7) {
+        enableErrorMsg(postalInput, "The postal code is too long");
       }
     }
     // if us
     else if (!canadaInput.checked) {
-      if (postal.value.length === 0 ){
+      if (postal.value.length === 0) {
         enableErrorMsg(postalInput, "Enter Number");
-      } 
-      if (postal.value.length <= 5){
-        if (postal.value.length === 1) {
-          checkIfMatchesPattern = (postalInput, /^\d{1}$/, 'Number', 'Number');
-        } else if (postal.value.length === 2) {
-          checkIfMatchesPattern = (postalInput, /^\d{2}$/, "Number", "Number");
-        } else if (postal.value.length === 3) {
-          checkIfMatchesPattern = (postalInput, /^\d{3}$/, "Number", "Number");
-        } else if (postal.value.length === 4) {
-          checkIfMatchesPattern = (postalInput, /^\d{4}$/, "Number", "Number");
-        } else if (postal.value.length === 5) {
-          checkIfMatchesPattern = (postalInput, /^\d{5}$/, "Number", "Number");
-        }
-        
+      }
+
+      if (postal.value.length === 1) {
+        checkIfMatchesPattern(postalInput, /^\d{1}$/, "Number", "Number");
+      } else if (postal.value.length === 2) {
+        checkIfMatchesPattern(postalInput, /^\d{2}$/, "Number", "Number");
+      } else if (postal.value.length === 3) {
+        checkIfMatchesPattern(postalInput, /^\d{3}$/, "Number", "Number");
+      } else if (postal.value.length === 4) {
+        checkIfMatchesPattern(postalInput, /^\d{4}$/, "Number", "Number");
+      } else if (postal.value.length === 5) {
+        checkIfMatchesPattern(postalInput, /^\d{5}$/, "Number", "Number");
+      } else if (postal.value.length >= 6 && !postal.value.includes("-")) {
+        enableErrorMsg(
+          postalInput,
+          "To extend beyond 5 numbers must extend with -",
+        );
+      } else if (postal.value.length === 7) {
+        checkIfMatchesPattern(
+          postalInput,
+          /^\d{5}(-)\d{1}$/,
+          "Number",
+          "Number",
+        );
+      } else if (postal.value.length === 8) {
+        checkIfMatchesPattern(
+          postalInput,
+          /^\d{5}(-)\d{2}$/,
+          "Number",
+          "Number",
+        );
+      } else if (postal.value.length === 9) {
+        checkIfMatchesPattern(
+          postalInput,
+          /^\d{5}(-)\d{3}$/,
+          "Number",
+          "Number",
+        );
+      } else if (postal.value.length === 10) {
+        checkIfMatchesPattern(
+          postalInput,
+          /^\d{5}(-)\d{4}$/,
+          "Number",
+          "Number",
+        );
+      } else if (postal.value.length > 10) {
+        enableErrorMsg(postalInput, "The postal code is too long");
       }
     }
   } else {
@@ -168,7 +192,6 @@ const checkIfMatchesPattern = (
   validLastInput,
   validNextInput,
 ) => {
-  console.log(pattern);
   const currentAllowedValue = pattern;
   const validity = currentAllowedValue.test(postalInput.value);
   if (!validity) {
@@ -193,4 +216,4 @@ const isValidPostal = (postal) => {
   }
 };
 
-export { validatePostal };
+export { validatePostal, isValidPostal};
