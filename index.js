@@ -12,7 +12,7 @@ import {
 } from "./Validations/postalValidation.js";
 import { disableErrorMsg, enableErrorMsg } from "./errorMsg.js";
 import {
-    isValidPassword,
+  isValidPassword,
   isValidPasswordConfirm,
   validatePassword,
   validatePasswordConfirm,
@@ -61,14 +61,24 @@ inputList.forEach((input) => {
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   inputList.forEach((input) => {
-    input.classList.add('touched')
+    input.classList.add("touched");
     validate(input);
     if (input.validity.valueMissing) {
       enableErrorMsg(input, "Missing value");
     }
   });
-  console.log(`email valid : ${isValidEmail(emailInput)}`);
+  if (
+    isValidEmail(emailInput) &&
+    isValidPostal(postalInput) &&
+    isValidPassword(passwordInput) &&
+    isValidPasswordConfirm(passwordInput, passwordConfirmInput)
+  ) {
+    alert('You did it! You correctly filled a form!')
+  }
+console.log(`email valid : ${isValidEmail(emailInput)}`);
   console.log(`postal valid : ${isValidPostal(postalInput)}`);
   console.log(`password valid : ${isValidPassword(passwordInput)}`);
-  console.log(`password confirm valid : ${isValidPasswordConfirm(passwordInput, passwordConfirmInput)}`);
+  console.log(
+    `password confirm valid : ${isValidPasswordConfirm(passwordInput, passwordConfirmInput)}`,
+  );
 });
