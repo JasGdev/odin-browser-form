@@ -4,11 +4,17 @@ const passwordInput = document.querySelector(".password");
 const passwordConfirmInput = document.querySelector(".passwordConfirm");
 
 
+passwordInput.addEventListener('input', function (){
+    validatePassword()
+    validatePasswordConfirm()
+})
 
-
+passwordConfirmInput.addEventListener("input", function () {
+  validatePasswordConfirm();
+});
 
 const validatePassword = () => {
-
+    
 }
 
 const validatePasswordConfirm = () => {};

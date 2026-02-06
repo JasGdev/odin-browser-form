@@ -8,19 +8,20 @@ const usInput = document.querySelector(".us");
 const postalError = document.querySelector(".postalError");
 
 canadaInput.addEventListener("change", () => {
+  postalInput.placeholder = "(A1A1A1) / (A1A 1A1) / (A1A-1A1)"; 
   if (postalError.classList.contains("invalid")) {
     validatePostal();
   }
 });
 
 usInput.addEventListener("change", () => {
+  postalInput.placeholder = "(12345) / (12345-1234) "; 
   if (postalError.classList.contains("invalid")) {
     validatePostal();
   }
 });
 
 postalInput.addEventListener("input", function () {
-postalInput.classList.add("touched");
   validatePostal();
 });
 
