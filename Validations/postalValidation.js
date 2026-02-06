@@ -20,7 +20,7 @@ usInput.addEventListener("change", () => {
 });
 
 postalInput.addEventListener("input", function () {
-
+postalInput.classList.add("touched");
   validatePostal();
 });
 

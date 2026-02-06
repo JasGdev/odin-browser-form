@@ -16,7 +16,7 @@ import {
   isValidPasswordConfirm,
   validatePassword,
   validatePasswordConfirm,
-} from "./passwordValidation.js";
+} from "./Validations/passwordValidation.js";
 
 const inputList = [
   emailInput,
@@ -52,6 +52,7 @@ inputList.forEach((input) => {
 // validation on entering
 inputList.forEach((input) => {
   input.addEventListener("focus", function () {
+    input.classList.add("touched");
     validate(input);
   });
 });
@@ -60,6 +61,7 @@ inputList.forEach((input) => {
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   inputList.forEach((input) => {
+    input.classList.add('touched')
     validate(input);
     if (input.validity.valueMissing) {
       enableErrorMsg(input, "Missing value");

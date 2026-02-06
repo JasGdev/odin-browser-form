@@ -58,7 +58,7 @@ input:focus {
   border: 1px rgb(0, 0, 0) solid;
 }
 
-input:invalid {
+input.touched:invalid {
   border: 1px  var(--error-color) solid;
 }
 

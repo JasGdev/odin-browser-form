@@ -5,6 +5,8 @@ const passwordConfirmInput = document.querySelector(".passwordConfirm");
 
 
 
+
+
 const validatePassword = () => {
 
 }

@@ -5,6 +5,7 @@ const emailInput = document.querySelector(".email");
 // Setting up Email
 
 emailInput.addEventListener("input", function () {
+  emailInput.classList.add("touched");
   validateEmail();
 });
 
