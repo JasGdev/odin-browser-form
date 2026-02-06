@@ -58,6 +58,23 @@ input:focus {
   border: 1px rgb(0, 0, 0) solid;
 }
 
+
+
+input.touched:valid {
+  border: 1px  rgb(0, 153, 25) solid;
+}
+
+input.touched:valid:focus {
+  background-color: rgba(43, 255, 0, 0.205);
+}
+
+input.touched:valid:hover {
+  border: 1px  rgb(0, 153, 25) solid;
+  background-color: rgba(43, 255, 0, 0.205);
+}
+
+
+
 input.touched:invalid {
   border: 1px  var(--error-color) solid;
 }
@@ -65,6 +82,13 @@ input.touched:invalid {
 input:invalid:focus {
   background-color: rgba(255, 0, 0, 0.226);
 }
+
+input.touched:invalid:hover {
+  border: 1px  var(--error-color) solid;
+  background-color: rgba(255, 0, 0, 0.226);
+}
+
+
 
 /* button */
 button {
