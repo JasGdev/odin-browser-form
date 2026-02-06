@@ -13,11 +13,12 @@ const validatePasswordConfirm = () => {};
 
 
 const isValidPassword = (passwordInput) => {
-
+    // at least 1 letter, digit, min length 8
+    return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(passwordInput.value)
 }
 
-const isValidPasswordConfirm = (passwordConfirmInput) => {
-    
+const isValidPasswordConfirm = (passwordInput, passwordConfirmInput) => {
+    return passwordInput.value === passwordConfirmInput.value
 }
 
 export {validatePassword, validatePasswordConfirm, isValidPassword, isValidPasswordConfirm}

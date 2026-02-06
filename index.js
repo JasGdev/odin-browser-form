@@ -41,7 +41,11 @@ const validate = (input) => {
 inputList.forEach((input) => {
   input.addEventListener("focusout", function () {
     validate(input);
-    disableErrorMsg(input);
+
+    // should just turn of span
+    const errorSpan = document.querySelector(`.${input.id}Error`);
+    errorSpan.classList.remove("invalid");
+    errorSpan.textContent = "";
   });
 });
 
@@ -64,5 +68,5 @@ form.addEventListener("submit", function (e) {
   console.log(`email valid : ${isValidEmail(emailInput)}`);
   console.log(`postal valid : ${isValidPostal(postalInput)}`);
   console.log(`password valid : ${isValidPassword(passwordInput)}`);
-  console.log(`password confirm valid : ${isValidPasswordConfirm(passwordConfirmInput)}`);
+  console.log(`password confirm valid : ${isValidPasswordConfirm(passwordInput, passwordConfirmInput)}`);
 });
